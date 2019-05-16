@@ -15,6 +15,9 @@ public interface TaskDao {
     @Query("SELECT * FROM task ORDER BY priority")
     List<TaskEntry> loadAllTasks();
 
+    @Query("SELECT * FROM task WHERE id = :id")
+    TaskEntry loadTaskById(int id);
+
     @Insert
     void insertTask(TaskEntry taskEntry);
 
@@ -24,6 +27,4 @@ public interface TaskDao {
     @Delete
     void deleteTask(TaskEntry taskEntry);
 
-    // TODO (1) Create a Query method named loadTaskById that receives an int id and returns a TaskEntry Object
-    // The query for this method should get all the data for that id in the task table
 }
