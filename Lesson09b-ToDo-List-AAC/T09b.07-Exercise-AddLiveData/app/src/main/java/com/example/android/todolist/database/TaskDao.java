@@ -7,14 +7,15 @@ import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
 
+import android.arch.lifecycle.LiveData;
+
 import java.util.List;
 
 @Dao
 public interface TaskDao {
 
-    // TODO (2) Wrap the return type with LiveData
     @Query("SELECT * FROM task ORDER BY priority")
-    List<TaskEntry> loadAllTasks();
+    LiveData<List<TaskEntry>> loadAllTasks();
 
     @Insert
     void insertTask(TaskEntry taskEntry);
